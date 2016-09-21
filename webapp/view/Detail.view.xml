@@ -1,0 +1,56 @@
+<mvc:View controllerName="de.wegelin.controller.Detail" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Page id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="{i18n>detailTitle}" busy="{detailView>/busy}"
+		busyIndicatorDelay="{detailView>/delay}">
+		<content>
+			<ObjectHeader id="objectHeader" title="{CompanyName}"></ObjectHeader>
+			<f:SimpleForm>
+				<Label text="Business Partner Id"></Label>
+				<Text text="{BpId}"></Text>
+				<Label text="CompanyName"></Label>
+				<Text text="{CompanyName}"></Text>
+				<Label text="LegalForm"></Label>
+				<Text text="{LegalForm}"></Text>
+				<Label text="Street"></Label>
+				<Text text="{Street}"></Text>
+				<Label text="Building"></Label>
+				<Text text="{Building}"></Text>
+				<Label text="City"></Label>
+				<Text text="{City}"></Text>
+				<Label text="Country"></Label>
+				<Text text="{Country}"></Text>
+				<Label text="Postal Code"></Label>
+				<Text text="{PostalCode}"></Text>
+				<Label text="Email Address"></Label>
+				<Text text="{EmailAddress}"></Text>
+				<Label text="Phone Number"></Label>
+				<Text text="{PhoneNumber}"></Text>
+				<Label text="Fax Number"></Label>
+				<Text text="{FaxNumber}"></Text>
+				<Label text="Web Address"></Label>
+				<Text text="{WebAddress}"></Text>
+				<Label text="Bp Role"></Label>
+				<Text text="{BpRole}"></Text>
+				<Label text="Address Type"></Label>
+				<Text text="{AddressType}"></Text>
+			</f:SimpleForm>			
+		</content>
+		<footer>
+			<OverflowToolbar id="footerToolbar">
+				<ToolbarSpacer/>
+				<Button text="Edit" type="Emphasized" press="onEdit" ></Button>
+				<Button text="Delete" type="Reject" press="onDelete" ></Button>
+				<Button id="shareButton" tooltip="{i18n>shareTooltip}" icon="sap-icon://action" press="onSharePress">
+					<dependents>
+						<ActionSheet id="shareSheet" showCancelButton="true" placement="Top">
+							<buttons>
+								<Button id="shareEmail" icon="sap-icon://email" text="{i18n>shareSendEmail}" press="onShareEmailPress"/>
+								<Button id="shareInJam" icon="sap-icon://jam" text="{i18n>shareOnJamTitle}" press="onShareInJamPress" visible="{FLP>/isShareInJamActive}"/>
+								<footerbar:AddBookmarkButton id="shareTile" appData="{ path: 'detailView>/saveAsTileTitle', formatter: '.formatter.shareTileData' }"/>
+							</buttons>
+						</ActionSheet>
+					</dependents>
+				</Button>
+			</OverflowToolbar>
+		</footer>
+	</Page>
+</mvc:View>
